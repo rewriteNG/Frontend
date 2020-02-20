@@ -1,1 +1,45 @@
-<p>register works!</p>
+<main role="main">
+    <div class='register'>
+        <b>Anmeldung:</b><br>
+        <form action="Anmeld.php" method="post">
+            <table border='0'>
+                <tr>
+                    <td>Nick/Login:</td>
+                    <td><input name="nick" type="text" id="nick" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td>Passwort:</td>
+                    <td><input name="pw" type="password" id="pw" maxlength="14"></td>
+                </tr>
+                <tr>
+                    <td>Passwort best&auml;tigen:</td>
+                    <td><input name="pw2" type="password" id="pw2" maxlength="14"></td>
+                </tr>
+                <tr>
+                    <td>E-Mail:</td>
+                    <td><input name="mail" type="text" id="mail" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td>Geworben von </td>
+                    <td><input type="text" name="werb" size="20"> oder Keinem:" .'<input type="checkbox"
+                            name="werbNoone" value="1"></td>
+
+                </tr>
+                <input type='hidden' name='id' value='$rand'>
+                <tr>
+                    <td colspan='2'><b>Botschutz:</b></td>
+                </tr>
+            </table>
+
+            Hiermit bestätige ich dass ich die <a
+                href="/Sonstiges/Wiki/index.php/Nutzungsbedingungen">Nutzungsbedingungen</a> gelesen habe und
+            <b>mindestens</b> 12 Jahre oder Älter bin.<br>
+            <input type='checkbox' name='Altersbest' value='Jap'><br><br>
+
+            <br>
+            <label>
+                <input type=" submit" name="Submit" value="Anmelden">
+            </label>
+        </form>
+    </div>
+</main>
