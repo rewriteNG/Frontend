@@ -23,6 +23,10 @@ export class AuthService {
     private logoutUrl = this.apiUrl + '/logout';
     private userUrl = this.apiUrl + '/me';
     constructor(private http: HttpClient, private router: Router) { }
+    /**
+     * makes a Call to the Api on route '/register'
+     * @param user 
+     */
     onRegister(user: User): Observable<User> {
         const request = JSON.stringify(
             { name: user.name, email: user.email, password: user.password }
@@ -40,6 +44,10 @@ export class AuthService {
                 catchError(error => this.handleError(error))
             );
     }
+    /**
+     * makes a Call to the Api on route '/login'
+     * @param user 
+     */
     onLogin(user: User): Observable<User> {
         const request = JSON.stringify(
             { name: user.name, password: user.password }
@@ -57,6 +65,9 @@ export class AuthService {
                 catchError(error => this.handleError(error))
             );
     }
+    /**
+     * makes Call to the Api on route '/logout'
+     */
     onLogout(): Observable<User> {
         return this.http.post(this.logoutUrl, httpOptions)
             .pipe(
@@ -68,12 +79,22 @@ export class AuthService {
                 )
             );
     }
+    /**
+     * sets a token to the localStorage
+     * @param token 
+     */
     setToken(token: string): void {
         return localStorage.setItem('token', token);
     }
+    /**
+     * retrieves token from localStorage
+     */
     getToken(): string {
         return localStorage.getItem('token');
     }
+    /**
+     * makes Call to the Api on route '/me'  and retrievs CurrentUser Object
+     */
     getUser(): Observable<User> {
         return this.http.get(this.userUrl)
             .pipe(
@@ -83,5 +104,15 @@ export class AuthService {
                     }
                 )
             );
+    }
+    /**
+     * small helper to Check if User is Authenticated, checks for the Token
+     */
+    isAuthenticated(): boolean {
+        const token: string = this.getToken();
+        if (token) {
+            return true;
+        }
+        return false;
     }
 }
