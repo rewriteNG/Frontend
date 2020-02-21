@@ -115,4 +115,19 @@ export class AuthService {
         }
         return false;
     }
+    /**
+     * error Handling client side errors get output in the console, other errors are pushed on
+     * @param error 
+     */
+    private handleError(error: HttpErrorResponse) {
+        if (error.error instanceof ErrorEvent) {
+            //A client-side error
+            console.error('An error occurred:', error.error.message);
+        } else {
+            //Backend error.
+            return throwError(error);
+        }
+        //return custom error message
+        return throwError('Ops something smells Wrong here; please try later.');
+    }
 }
