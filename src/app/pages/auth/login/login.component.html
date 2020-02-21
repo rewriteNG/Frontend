@@ -2,17 +2,17 @@
     <div class='Stil2'>
         <div> Login
             <b>(Cookies müssen aktiviert sein!):</b><br /><br />
-            <form name="login" method="post" action="Log.php">
+            <form name="login" method="post">
                 <p>Login:
-                    <input name="login" type="text">
+                    <input name="login" type="text" id="name">
                     <br />
                     Passwort:
-                    <input name="password" type="password">
+                    <input name="password" type="password" id="password">
                     <br />
                     <input type="submit" name="Submit" value="Login">
                 </p>
             </form>
-            <a href="pw.php">Passwort/Loginname vergessen?</a>
+            <a routerLink="['/pw_reset']">Passwort/Loginname vergessen?</a>
         </div>
     </div>
 </main>
