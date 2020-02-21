@@ -1,7 +1,10 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+//Application
 import { HttpHandleErrorService } from './shared/_services/http-handle-error.service';
+import { AppHttpInterceptorService } from './shared/_services/http-interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +31,11 @@ import { CenterModule } from './pages/center/center.module';
   providers: [
     Title,
     HttpHandleErrorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
