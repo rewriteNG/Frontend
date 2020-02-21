@@ -21,6 +21,7 @@ export class AuthService {
     private registerUrl = this.apiUrl + '/register';
     private loginUrl = this.apiUrl + '/login';
     private logoutUrl = this.apiUrl + '/logout';
+    private userUrl = this.apiUrl + '/me';
     constructor(private http: HttpClient, private router: Router) { }
     onRegister(user: User): Observable<User> {
         const request = JSON.stringify(
@@ -64,13 +65,23 @@ export class AuthService {
                         localStorage.removeItem('token');
                         this.router.navigate(['/']);
                     }
-                );
-            )
+                )
+            );
     }
     setToken(token: string): void {
         return localStorage.setItem('token', token);
     }
     getToken(): string {
         return localStorage.getItem('token');
+    }
+    getUser(): Observable<User> {
+        return this.http.get(this.userUrl)
+            .pipe(
+                tap(
+                    (user: User) => {
+                        this.currentUser = user;
+                    }
+                )
+            );
     }
 }
