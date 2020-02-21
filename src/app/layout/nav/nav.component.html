@@ -1,19 +1,44 @@
 <header>
-    <ul>
-        <li>
-            <a [routerLink]="['/']" (click)="setTitle('NarutoRPG')">NarutoRPG</a>
-        </li>
-        <li *ngIf="!auth.isAuthenticated()">
-            <a [routerLink]="['/center']" routerLinkActive="active" (click)="setTitle('Center - NarutoRPG')">Center</a>
-        </li>
-        <li>
-            <a [routerLink]="['/login']" routerLinkActive="active" (click)="setTitle('Login - NarutoRPG')">Login</a>
-        </li>
-        <li>
-            <a [routerLink]="['/register']" routerLinkActive="active" (click)="setTitle('Anmeldung - NarutoRPG')">Anmeldung</a>
-        </li>
-        <li>
-            <a [routerLink]="['/logout']" routerLinkActive="active" (click)="setTitle('Abmeldung - NarutoRPG')">Abmeldung</a>
-        </li>
-    </ul>
+    <table cellspacing='0' cellpadding='0' width='1163' height='100%' style='margin:aut'>
+        <tr>
+            <td width='32' rowspan='4'><img src='./../../../assets/layout/Randlinks.png' width='32' height='100%'>
+            </td>
+            <td width='1099' height='240' colspan='4' valign='top'  background='./../../../assets/layout/Header.png'>
+                <table width='100%'>
+                    <tr>
+                        <td valign='top' width='250'>
+                            <form method='POST' action='Log.php' class="login"><br>
+                                <u>Login</u>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Nick
+                                        </td>
+                                        <td><input type='login' name='login'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Passwort
+                                        </td>
+                                        <td><input type='password' name='password'></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='2'><input type='submit' value='Login'></td>
+                                    </tr>
+                                </table>
+                                <a href='/Anmeldung2.php'>
+                                    Neuen Account erstellen
+                                </a>
+                            </form>
+                        </td>
+                        <td width='30'>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+        </tr>
+    </table>
 </header>
