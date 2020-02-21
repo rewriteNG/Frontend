@@ -8,16 +8,18 @@ import { environment } from '../environments/environment';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule} from './pages/auth/auth.module';
 import { NavComponent } from './layout/nav/nav.component';
+import { CenterModule } from './pages/center/center.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    CenterModule, 
     AuthModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
