@@ -3,7 +3,7 @@
         <li>
             <a [routerLink]="['/']" (click)="setTitle('NarutoRPG')">NarutoRPG</a>
         </li>
-        <li>
+        <li *ngIf="!auth.isAuthenticated()">
             <a [routerLink]="['/center']" routerLinkActive="active" (click)="setTitle('Center - NarutoRPG')">Center</a>
         </li>
         <li>
