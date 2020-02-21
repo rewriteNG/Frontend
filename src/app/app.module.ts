@@ -1,12 +1,14 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpHandleErrorService } from './shared/_services/http-handle-error.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeModule } from './pages/home/home.module';
-import { AuthModule} from './pages/auth/auth.module';
+import { AuthModule } from './pages/auth/auth.module';
 import { NavComponent } from './layout/nav/nav.component';
 import { CenterModule } from './pages/center/center.module';
 
@@ -19,12 +21,13 @@ import { CenterModule } from './pages/center/center.module';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    CenterModule, 
+    CenterModule,
     AuthModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    Title
+    Title,
+    HttpHandleErrorService,
   ],
   bootstrap: [AppComponent]
 })
