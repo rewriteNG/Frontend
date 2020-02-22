@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/pages/auth/_services/auth.service';
 
 
@@ -10,8 +11,11 @@ import { AuthService } from 'src/app/pages/auth/_services/auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private titleTagService: Title) { }
-  public auth: AuthService
+  constructor(
+    private titleTagService: Title,
+    public auth: AuthService,
+    private router: Router
+  ) { }
   /**
    * sets the the Title of the Page in the Header
    * @param pageTitle 
@@ -20,6 +24,12 @@ export class NavComponent implements OnInit {
     this.titleTagService.setTitle(pageTitle);
   }
   ngOnInit() {
+    if (this.auth.getToken()) {
+      this.auth.getUser().subscribe();
+    }
+  }
+  onLogout() {
+    this.auth.onLogout().subscribe();
   }
 
 }

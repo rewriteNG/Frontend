@@ -1,19 +1,15 @@
-(ngSubmit)= "onSubmit(loginForm)" #loginForm="ngForm"
-<main roles="main">
-    <div class='Stil2'>
-        <div> Login
-            <b>(Cookies müssen aktiviert sein!):</b><br /><br />
-            <form name="login" method="post" >
-                <p>Login:
-                    <input name="login" type="text" id="name">
-                    <br />
-                    Passwort:
-                    <input name="password" type="password" id="password">
-                    <br />
-                    <input type="submit" name="Submit" value="Login">
-                </p>
-            </form>
-            <a routerLink="['/pw_reset']">Passwort/Loginname vergessen?</a>
-        </div>
+<h2>Login</h2>
+<form  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="username" [(ngModel)]="user.name" name="name" id="username"  >
     </div>
-</main>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="user.password" name="password" id="password">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Login</button>
+        <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+    </div>
+</form>
