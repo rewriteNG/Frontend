@@ -27,7 +27,7 @@ export class AuthService {
      * makes a Call to the Api on route '/register'
      * @param user 
      */
-    onRegister(user: User): Observable<User> {
+    onRegister(user): Observable<User> {
         const request = JSON.stringify(
             { name: user.name, email: user.email, password: user.password }
         )
@@ -96,10 +96,11 @@ export class AuthService {
      * makes Call to the Api on route '/me'  and retrievs CurrentUser Object
      */
     getUser(): Observable<User> {
-        return this.http.get(this.userUrl)
+        return this.http.get(this.userUrl, httpOptions)
             .pipe(
                 tap(
                     (user: User) => {
+                        console.log(user);
                         this.currentUser = user;
                     }
                 )
