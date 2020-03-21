@@ -14,11 +14,15 @@ import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { NavComponent } from './layout/nav/nav.component';
 import { CenterModule } from './pages/center/center.module';
+import { LeftComponent } from './layout/left/left.component';
+import { RightComponent } from './layout/right/right.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    LeftComponent,
+    RightComponent,
   ],
   imports: [
     BrowserModule,

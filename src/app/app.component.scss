@@ -1,0 +1,17 @@
+.grid{
+    display: grid;
+    grid-template-rows: 10vh, 80vh, 10vh;
+    grid-template-columns: 10vw 80vw 10vw;
+}
+
+.nav{
+    grid-column: 1/4;
+}
+
+.left{
+    grid-row: 2/4;
+}
+
+.footer{
+    grid-column: 2/4;
+}

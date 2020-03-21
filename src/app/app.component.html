@@ -1,7 +1,19 @@
-<app-nav></app-nav>
-<router-outlet></router-outlet>
-<footer class="footer">
-    <div class="p1-3">
-        <span class="text-muted">2020 &copy; All Rights Reserved</span>
+<div class="grid">
+    <div class="nav">
+        <app-nav></app-nav>
     </div>
-</footer>
+    <div class="left">
+        <app-left></app-left>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="right">
+        <app-right></app-right>
+    </div>
+    <footer class="footer">
+        <div class="p1-3">
+            <span class="text-muted">2020 &copy; All Rights Reserved</span>
+        </div>
+    </footer>
+</div>
