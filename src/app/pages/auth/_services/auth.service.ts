@@ -69,7 +69,7 @@ export class AuthService {
      * makes Call to the Api on route '/logout'
      */
     onLogout(): Observable<User> {
-        return this.http.post(this.logoutUrl, httpOptions)
+        return this.http.get(this.logoutUrl, httpOptions)
             .pipe(
                 tap(
                     () => {
