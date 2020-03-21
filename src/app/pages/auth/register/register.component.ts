@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from '../user';
@@ -24,11 +24,11 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.regisForm = this.formBuilder.group({
-      "name": ['', Validators.required],
-      "email": ['', Validators.required],
+      "login": ['', [Validators.required, Validators.minLength(4)]],
+      "email": ['', [Validators.required, Validators.email]],
       "password": ['', [Validators.required, Validators.minLength(8)]],
-      "password_conf": ['', [Validators.required, Validators.minLength(8)]]
-    });
+      "password_conf": ['']
+    }, { validator: this.checkPass });
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(regisForm) {
     this.submitted = true;
-
+    console.log(this.regisForm);
     if (this.regisForm.invalid) {
       return;
     }
@@ -52,5 +52,10 @@ export class RegisterComponent implements OnInit {
       (err) => {
         this.error = err.error;
       });
+  }
+  checkPass(group: FormGroup) {
+    let origin = group.get('password').value;
+    let copy = group.get('password_conf').value;
+    return origin === copy ? null : { notSame: true };
   }
 }
