@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.regisForm = this.formBuilder.group({
-      "login": ['', [Validators.required, Validators.minLength(4)]],
+      "name": ['', [Validators.required, Validators.minLength(4)]],
       "email": ['', [Validators.required, Validators.email]],
       "password": ['', [Validators.required, Validators.minLength(8)]],
       "password_conf": ['']
@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(regisForm) {
     this.submitted = true;
-    console.log(this.regisForm);
     if (this.regisForm.invalid) {
       return;
     }

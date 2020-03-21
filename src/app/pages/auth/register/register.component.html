@@ -4,10 +4,10 @@
         <form [formGroup]="regisForm" (ngSubmit)="onSubmit(regisForm.value)">
             <div class='form-group'>
                 <label>Login:</label>
-                <input formControlName="login" name="login" type="text" id="login" maxlength="50">
-                <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
-                    <div *ngIf="f.login.errors.required">Ein Login wird benötigt</div>
-                    <div *ngIf="f.login.errors.minlength">Der Login muss mindestens 4 Zeichen lang sein.</div>
+                <input formControlName="name" name="name" type="text" id="name" maxlength="50">
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Ein Login wird benötigt</div>
+                    <div *ngIf="f.name.errors.minlength">Der Login muss mindestens 4 Zeichen lang sein.</div>
                 </div>
             </div>
             <div>
