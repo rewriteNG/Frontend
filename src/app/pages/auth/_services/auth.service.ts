@@ -73,7 +73,7 @@ export class AuthService {
             .pipe(
                 tap(
                     () => {
-                        localStorage.removeItem('token');
+                        this.removeToken();
                         this.router.navigate(['/']);
                     }
                 )
@@ -91,6 +91,12 @@ export class AuthService {
      */
     getToken(): string {
         return localStorage.getItem('token');
+    }
+    /**
+     * removes token from localStorage
+     */
+    removeToken(): void {
+        localStorage.removeItem('token');
     }
     /**
      * makes Call to the Api on route '/me'  and retrievs CurrentUser Object
