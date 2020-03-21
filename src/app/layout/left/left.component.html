@@ -1,1 +1,10 @@
-<p>left works!</p>
+<div>
+    <ul>
+        <li>
+            <a [routerLink]="['/']" (click)="setTitle('Title')">Home</a>
+        </li>
+        <li>
+            <a [routerLink]="['/center']" routerLinkActive="active" (click)="setTitle('Center')">Center</a>
+        </li>
+    </ul>
+</div>

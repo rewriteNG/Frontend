@@ -14,7 +14,6 @@ export class NavComponent implements OnInit {
   constructor(
     private titleTagService: Title,
     public auth: AuthService,
-    private router: Router
   ) { }
   /**
    * sets the the Title of the Page in the Header

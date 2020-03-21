@@ -1,12 +1,6 @@
 <header>
     <ul>
-        <li>
-            <a [routerLink]="['/']" (click)="setTitle('Title')">Home</a>
-        </li>
-        <li>
-            <a [routerLink]="['/center']" routerLinkActive="active" (click)="setTitle('Center')">Center</a>
-        </li>
-        <li>
+        <li *ngIf="!auth.isAuthenticated()">
             <a [routerLink]="['/register']" routerLinkActive="active" (click)="setTitle('Registrierung')">Register</a>
         </li>
         <li *ngIf="auth.isAuthenticated()">

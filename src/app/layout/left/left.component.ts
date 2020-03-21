@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-left',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private titleTagService: Title,
+  ) { }
 
   ngOnInit(): void {
   }
-
+  /**
+   * sets the the Title of the Page in the Header
+   * @param pageTitle 
+   */
+  public setTitle(pageTitle: string) {
+    this.titleTagService.setTitle(pageTitle);
+  }
 }
