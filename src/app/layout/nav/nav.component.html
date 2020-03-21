@@ -1,19 +1,19 @@
 <header>
     <ul>
         <li>
-            <a [routerLink]="['/']" (click)="setTitle('NarutoRPG')">NarutoRPG</a>
-        </li>
-        <li >
-            <a [routerLink]="['/center']" routerLinkActive="active" (click)="setTitle('Center - NarutoRPG')">Center</a>
+            <a [routerLink]="['/']" (click)="setTitle('Title')">Home</a>
         </li>
         <li>
-            <a [routerLink]="['/login']" routerLinkActive="active" (click)="setTitle('Login - NarutoRPG')">Login</a>
+            <a [routerLink]="['/center']" routerLinkActive="active" (click)="setTitle('Center')">Center</a>
         </li>
         <li>
-            <a [routerLink]="['/register']" routerLinkActive="active" (click)="setTitle('Anmeldung - NarutoRPG')">Anmeldung</a>
+            <a [routerLink]="['/register']" routerLinkActive="active" (click)="setTitle('Registrierung')">Register</a>
         </li>
-        <li>
-            <a [routerLink]="['/logout']" routerLinkActive="active" (click)="setTitle('Abmeldung - NarutoRPG')">Abmeldung</a>
+        <li *ngIf="auth.isAuthenticated()">
+            <a [routerLink]="['/logout']" routerLinkActive="active" (click)="setTitle('Abmeldung')">Logout</a>
+        </li>
+        <li *ngIf="!auth.isAuthenticated()">
+            <a [routerLink]="['/login']" routerLinkActive="active" (click)="setTitle('Anmeldung')">Login</a>
         </li>
     </ul>
 </header>
