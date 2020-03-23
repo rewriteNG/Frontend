@@ -1,7 +1,7 @@
-import { Character } from './character';
+import { CharBase } from './charbase';
 
-describe('Character', () => {
+describe('CharBase', () => {
   it('should create an instance', () => {
-    expect(new Character()).toBeTruthy();
+    expect(new CharBase()).toBeTruthy();
   });
 });

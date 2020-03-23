@@ -13,7 +13,8 @@ export class CharacterComponent implements OnInit {
     { "key": "Rang", "value": "Noob" },
     { "key": "Standaort", "value": "Daheim" },
     { "key": "Beschreibung", "value": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde, eligendi nam a porro officia quidem ex magni. Sit placeat incidunt voluptates est aliquam, corporis vitae voluptas u dolores. Est, quae!" }
-  ]
+  ];
+
   constructor() { }
 
   ngOnInit() {
