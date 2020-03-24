@@ -1,17 +1,28 @@
 .grid{
     display: grid;
-    grid-template-rows: 10vh, 80vh, 10vh;
+    // grid-template-rows: 10vh, 80vh, 10vh;
     grid-template-columns: 10vw 80vw 10vw;
+    grid-template-areas: 
+    'nav nav nav'
+    'left content right'
+    'left footer footer'
+    ;
 }
 
 .nav{
-    grid-column: 1/4;
+    grid-area: nav;
 }
 
 .left{
-    grid-row: 2/4;
+    grid-area: left;
+}
+.content{
+    grid-area: content;
+}
+.right{
+    grid-area: right;
 }
 
 .footer{
-    grid-column: 2/4;
+    grid-area: footer;
 }
