@@ -1,0 +1,15 @@
+.char_container{
+    display: grid;
+    grid-template-areas: 
+    'charnav'
+    'charcontent'
+    ;
+}
+
+.char_nav{
+    grid-area: charnav;
+}
+
+.char_content{
+    grid-area: charcontent;
+}
