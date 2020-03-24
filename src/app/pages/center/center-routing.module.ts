@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CharnavComponent } from 'src/app/layout/charnav/charnav.component';
 import { CharRootComponent } from './char-root/char-root.component';
 import { CharBaseComponent } from './char-base/char-base.component';
+import { CharValueComponent } from './char-value/char-value.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
     component: CharRootComponent,
     children: [
       { path: '', redirectTo: 'base', pathMatch: 'full' },
-      { path: 'base', component: CharBaseComponent }
+      { path: 'base', component: CharBaseComponent },
+      { path: 'value', component: CharValueComponent}
     ]
   },
   { path: 'center', outlet: 'charnav', component: CharnavComponent }

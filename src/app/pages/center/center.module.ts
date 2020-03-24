@@ -5,6 +5,7 @@ import { CenterRoutingModule } from './center-routing.module';
 import { CharnavComponent } from 'src/app/layout/charnav/charnav.component';
 import { CharRootComponent } from './char-root/char-root.component';
 import { CharBaseComponent } from './char-base/char-base.component';
+import { CharValueComponent } from './char-value/char-value.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { CharBaseComponent } from './char-base/char-base.component';
     CharnavComponent,
     CharRootComponent,
     CharBaseComponent,
+    CharValueComponent,
   ],
   imports: [
     CommonModule,

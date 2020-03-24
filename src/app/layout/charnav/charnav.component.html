@@ -1,17 +1,7 @@
-<ul>
-    <li>
-        <a [routerLink]="['/base']" routerLinkActive="active" (click)="setTitle('Character-Allgemein')">Allgemein</a>
-    </li>
-    <li>
-        <a [routerLink]="['/value']" routerLinkActive="active" (click)="setTitle('Character-Grundwerte')">Grundwerte</a>
-    </li>
-    <li>
-        <a [routerLink]="['/skills']" routerLinkActive="active" (click)="setTitle('Character-Fähigkeiten')">Fähigkeiten</a>
-    </li>
-    <li>
-        <a [routerLink]="['/jutsu']" routerLinkActive="active" (click)="setTitle('Character-Jutsu')">Jutsu</a>
-    </li>
-    <li>
-        <a [routerLink]="['/special']" routerLinkActive="active" (click)="setTitle('Character-Besonderheiten')">Besonderheiten</a>
-    </li>
-</ul>
+<div>
+    <ul>
+        <li *ngFor="let item of items">
+            <a [routerLink]="[item.route]" routerLinkActive="active" (click)="setTitle(item.title)">{{item.name}}</a>
+        </li>
+    </ul>
+</div>
