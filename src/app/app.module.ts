@@ -16,6 +16,7 @@ import { NavComponent } from './layout/nav/nav.component';
 import { CenterModule } from './pages/center/center.module';
 import { LeftComponent } from './layout/left/left.component';
 import { RightComponent } from './layout/right/right.component';
+import { CharchooseComponent } from './layout/charchoose/charchoose.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RightComponent } from './layout/right/right.component';
     NavComponent,
     LeftComponent,
     RightComponent,
+    CharchooseComponent,
   ],
   imports: [
     BrowserModule,

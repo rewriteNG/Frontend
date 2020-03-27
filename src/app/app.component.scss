@@ -3,7 +3,7 @@
     // grid-template-rows: 10vh, 80vh, 10vh;
     grid-template-columns: 10vw 80vw 10vw;
     grid-template-areas: 
-    'nav nav nav'
+    'nav nav chars'
     'left content right'
     'left footer footer'
     ;
@@ -13,12 +13,18 @@
     grid-area: nav;
 }
 
+.charchoose{
+    grid-area: chars;
+}
+
 .left{
     grid-area: left;
 }
+
 .content{
     grid-area: content;
 }
+
 .right{
     grid-area: right;
 }
