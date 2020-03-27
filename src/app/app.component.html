@@ -1,22 +1,25 @@
 <div class="grid">
-    <div class="nav">
-        <app-nav></app-nav>
+  <div class="nav">
+    <app-nav></app-nav>
+  </div>
+  <div class="charchoose">
+    <app-charchoose></app-charchoose>
+  </div>
+  <div class="left">
+    <div *ngIf="auth.isAuthenticated(); else elseblock">
+      <app-left></app-left>
     </div>
-    <div class="charchoose">
-        <app-charchoose></app-charchoose>
+    <ng-template #elseblock></ng-template>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="right">
+    <app-right></app-right>
+  </div>
+  <footer class="footer">
+    <div class="p1-3">
+      <span class="text-muted">2020 &copy; All Rights Reserved</span>
     </div>
-    <div class="left">
-        <app-left></app-left>
-    </div>
-    <div class="content">
-        <router-outlet></router-outlet>
-    </div>
-    <div class="right">
-        <app-right></app-right>
-    </div>
-    <footer class="footer">
-        <div class="p1-3">
-            <span class="text-muted">2020 &copy; All Rights Reserved</span>
-        </div>
-    </footer>
+  </footer>
 </div>

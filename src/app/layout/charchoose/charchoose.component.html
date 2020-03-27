@@ -1,1 +1,5 @@
-<p>charchoose works!</p>
+<div *ngIf="chars">
+  <div *ngFor="let char of chars">
+    {{char?.name}}
+  </div>
+</div>
