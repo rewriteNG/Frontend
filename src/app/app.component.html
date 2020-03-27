@@ -6,10 +6,7 @@
     <app-charchoose></app-charchoose>
   </div>
   <div class="left">
-    <div *ngIf="auth.isAuthenticated(); else elseblock">
-      <app-left></app-left>
-    </div>
-    <ng-template #elseblock></ng-template>
+    <app-charchoose></app-charchoose>
   </div>
   <div class="content">
     <router-outlet></router-outlet>

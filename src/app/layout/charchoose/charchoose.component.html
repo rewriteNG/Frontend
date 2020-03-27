@@ -1,5 +1,9 @@
-<div *ngIf="chars">
-  <div *ngFor="let char of chars">
-    {{char?.name}}
-  </div>
+
+<div *ngIf="auth.isAuthenticated(); else elseblock">
+    <div *ngIf="characters">
+      <div *ngFor="let chara of characters">
+        <a (click)="setChar(chara?.id)" >{{chara?.name}}</a>
+      </div>
+    </div>
 </div>
+<ng-template #elseblock></ng-template>
