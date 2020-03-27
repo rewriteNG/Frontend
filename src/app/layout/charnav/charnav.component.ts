@@ -10,8 +10,8 @@ export class CharnavComponent implements OnInit {
   items= [
     { "route": "base", "title": "Character-Allgemein", "name": "Allgemein" },
     { "route": "value", "title": "Character-Grundwerte", "name": "Grundwerte" },
-    { "route": "skills", "title": "Character-Jutsu", "name": "Jutsu" },
-    { "route": "jutsu", "title": "Character-Allgemein", "name": "Allgemein" },
+    { "route": "skills", "title": "Character-Fähigkeiten", "name": "Fähigkeiten" },
+    { "route": "jutsu", "title": "Character-Jutsu", "name": "Jutsu" },
     { "route": "special", "title": "Character-Besonderheiten", "name": "Besonderheiten" }
   ];
   constructor(

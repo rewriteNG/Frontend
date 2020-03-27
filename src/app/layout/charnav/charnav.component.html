@@ -1,7 +1,5 @@
-<div>
-    <ul>
-        <li *ngFor="let item of items">
-            <a [routerLink]="[item.route]" routerLinkActive="active" (click)="setTitle(item.title)">{{item.name}}</a>
-        </li>
-    </ul>
+<div class="char-nav">
+    <div *ngFor="let item of items">
+        <a [routerLink]="[item.route]" routerLinkActive="active" (click)="setTitle(item.title)">{{item.name}}</a>
+    </div>
 </div>
