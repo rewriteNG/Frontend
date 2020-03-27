@@ -10,7 +10,7 @@ import { AuthService } from "src/app/pages/auth/_services/auth.service";
 export class CharchooseComponent implements OnInit {
   characters: any;
   isAuth: boolean = false;
-  constructor(private char: CharService, public auth: AuthService) {}
+  constructor(public char: CharService, public auth: AuthService) {}
   ngOnInit(): void {}
 
   ngDoCheck() {
@@ -30,9 +30,5 @@ export class CharchooseComponent implements OnInit {
     this.char.onCharOverView().subscribe(resp => {
       this.characters = resp;
     });
-  }
-
-  setChar(id: number) {
-    return localStorage.setItem('char_id', id.toString());
   }
 }

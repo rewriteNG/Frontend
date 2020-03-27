@@ -15,6 +15,7 @@ const httpOptions = {
 export class CharService {
   private readonly apiUrl = environment.apiUrl + "/character";
   private indexUrl = this.apiUrl + "/index";
+  private charBaseUrl = this.apiUrl + "/charbase";
   constructor(private http: HttpClient) {}
 
   onCharOverView() {
@@ -23,5 +24,22 @@ export class CharService {
         console.log(resp);
       })
     );
+  }
+
+  onGetCharBase() {
+    let id = this.getCharId();
+    return this.http.get(this.charBaseUrl + "/" + id, httpOptions).pipe(
+      tap(resp => {
+        console.log(resp);
+      })
+    );
+  }
+
+  setCharId(id: number) {
+    return localStorage.setItem("char_id", id.toString());
+  }
+
+  getCharId(): string {
+    return localStorage.getItem("char_id");
   }
 }
