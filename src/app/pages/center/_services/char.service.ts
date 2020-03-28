@@ -4,6 +4,7 @@ import { tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { Charbase } from "../charbase";
 import { Observable } from "rxjs";
+import { Charvalue } from "../charvalue";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,9 +17,12 @@ const httpOptions = {
 })
 export class CharService {
   public charBase: Charbase;
+  public charValue: Charvalue;
   private readonly apiUrl = environment.apiUrl + "/character";
   private indexUrl = this.apiUrl + "/index";
   private charBaseUrl = this.apiUrl + "/charbase";
+  private charValueUrl = this.apiUrl + "/charvalue";
+
   constructor(private http: HttpClient) {}
 
   onCharOverView() {
@@ -35,6 +39,16 @@ export class CharService {
       tap((resp: Charbase) => {
         console.log(resp);
         this.charBase = resp;
+      })
+    );
+  }
+
+  onGetCharValue(): Observable<Charvalue> {
+    let id = this.getCharId();
+    return this.http.get(this.charValueUrl + "/" + id, httpOptions).pipe(
+      tap((resp: Charvalue) => {
+        console.log(resp);
+        this.charValue = resp;
       })
     );
   }

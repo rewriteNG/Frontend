@@ -13,8 +13,8 @@ export class CharBaseComponent implements OnInit {
   charId: string = "";
   constructor(public char: CharService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
   ngDoCheck() {
     if (this.char.isCharChoosen() !== this.isCharId) {
       this.isCharId = this.char.isCharChoosen();
