@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
+import { Charbase } from "../charbase";
+import { Observable } from "rxjs";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,6 +15,7 @@ const httpOptions = {
   providedIn: "root"
 })
 export class CharService {
+  public charBase: Charbase;
   private readonly apiUrl = environment.apiUrl + "/character";
   private indexUrl = this.apiUrl + "/index";
   private charBaseUrl = this.apiUrl + "/charbase";
@@ -26,11 +29,12 @@ export class CharService {
     );
   }
 
-  onGetCharBase() {
+  onGetCharBase(): Observable<Charbase> {
     let id = this.getCharId();
     return this.http.get(this.charBaseUrl + "/" + id, httpOptions).pipe(
-      tap(resp => {
+      tap((resp: Charbase) => {
         console.log(resp);
+        this.charBase = resp;
       })
     );
   }
@@ -41,5 +45,16 @@ export class CharService {
 
   getCharId(): string {
     return localStorage.getItem("char_id");
+  }
+
+  /**
+   * small helper to check if a character is set active
+   */
+  isCharChoosen(): boolean {
+    const char: string = this.getCharId();
+    if (char) {
+      return true;
+    }
+    return false;
   }
 }

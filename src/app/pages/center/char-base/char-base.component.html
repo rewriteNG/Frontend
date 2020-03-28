@@ -1,7 +1,11 @@
-<div>
-    <ul>
-        <li *ngFor="let item of items">
-            <label>{{item.key}}:</label> {{item.value}}
-        </li>
-    </ul>
+<div *ngIf="char.isCharChoosen(); elseblock">
+  <ul>
+    <li><label>Name:</label> {{ character?.name }}</li>
+    <li><label>Alter:</label> {{ character?.age }}</li>
+    <li><label>Fraktion:</label> {{ character?.faction }}</li>
+    <li><label>Rang:</label> {{ character?.rank }}</li>
+    <li><label>Standaort:</label> {{ character?.current_location }}</li>
+    <li><label>Money:</label> {{ character?.money }}</li>
+  </ul>
 </div>
+<ng-template #elseblock></ng-template>
