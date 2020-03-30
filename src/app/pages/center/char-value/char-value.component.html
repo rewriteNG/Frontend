@@ -8,7 +8,13 @@
     <li><label>Taijutsu:</label> {{ character?.tai }}</li>
     <li><label>Ninjutsu:</label> {{ character?.nin }}</li>
     <li><label>Genjutsu:</label> {{ character?.gen }}</li>
-    <li><label>Elemente:</label> {{ character?.elements }}</li>
+    <ul>
+      <li><label>1. Elemente:</label> {{ (character?.elements)[1] }}</li>
+      <li><label>2. Elemente:</label> {{ (character?.elements)[2] }}</li>
+      <li><label>3. Elemente:</label> {{ (character?.elements)[3] }}</li>
+      <li><label>4. Elemente:</label> {{ (character?.elements)[4] }}</li>
+      <li><label>5. Elemente:</label> {{ (character?.elements)[5] }}</li>
+    </ul>
     <li><label>Lernfähigkeit:</label> {{ character?.learn }}</li>
   </ul>
 </div>
