@@ -1,1 +1,15 @@
-<p>char-value works!</p>
+<div *ngIf="char.isCharChoosen(); elseblock">
+  <ul>
+    <li><label>Stärke:</label> {{ character?.str }}</li>
+    <li><label>Verteidigung:</label> {{ character?.def }}</li>
+    <li><label>Geschwindigkeit:</label> {{ character?.speed }}</li>
+    <li><label>Ausdauer:</label> {{ character?.stamina }}</li>
+    <li><label>Chakra:</label> {{ character?.chakra }}</li>
+    <li><label>Taijutsu:</label> {{ character?.tai }}</li>
+    <li><label>Ninjutsu:</label> {{ character?.nin }}</li>
+    <li><label>Genjutsu:</label> {{ character?.gen }}</li>
+    <li><label>Elemente:</label> {{ character?.elements }}</li>
+    <li><label>Lernfähigkeit:</label> {{ character?.learn }}</li>
+  </ul>
+</div>
+<ng-template #elseblock></ng-template>
