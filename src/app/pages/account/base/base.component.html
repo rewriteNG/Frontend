@@ -1,1 +1,33 @@
-<p>base works!</p>
+<h2>Account</h2>
+Willkommen im Account Managment
+<ul>
+  <li>
+    Neuen Charakter Erstellen
+  </li>
+
+  <li>
+    Email Ändrn // sendet ne Email
+  </li>
+  <li>
+    Neues Passwort // sendet ne Email
+  </li>
+</ul>
+<form #accountForm="ngForm" (ngSubmit)="onSubmit(accountForm)">
+  <div class="form-group">
+    <label for="username">Anzeige Name</label>
+    <input type="text" [(ngModel)]="acc.username" name="name" id="username" />
+  </div>
+  <div class="form-group">
+    <label for="password">Anzeige Bild</label>
+    <input
+      type="text"
+      [(ngModel)]="acc.userpiclink"
+      name="password"
+      id="password"
+    />
+  </div>
+  <!-- <div class="form-group">
+    <button class="btn btn-primary">Login</button>
+    <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+  </div> -->
+</form>
