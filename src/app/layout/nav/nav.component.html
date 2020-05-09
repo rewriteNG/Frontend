@@ -1,13 +1,36 @@
 <header>
-    <ul>
-        <li *ngIf="!auth.isAuthenticated()">
-            <a [routerLink]="['/register']" routerLinkActive="active" (click)="setTitle('Registrierung')">Register</a>
-        </li>
-        <li *ngIf="auth.isAuthenticated()">
-            <a [routerLink]="['/logout']" routerLinkActive="active" (click)="setTitle('Abmeldung')">Logout</a>
-        </li>
-        <li *ngIf="!auth.isAuthenticated()">
-            <a [routerLink]="['/login']" routerLinkActive="active" (click)="setTitle('Anmeldung')">Login</a>
-        </li>
-    </ul>
+  <ul>
+    <li *ngIf="!auth.isAuthenticated()">
+      <a
+        [routerLink]="['/register']"
+        routerLinkActive="active"
+        (click)="setTitle('Registrierung')"
+        >Register</a
+      >
+    </li>
+    <li *ngIf="!auth.isAuthenticated()">
+      <a
+        [routerLink]="['/account']"
+        routerLinkActive="active"
+        (click)="setTitle('Account')"
+        >Account</a
+      >
+    </li>
+    <li *ngIf="auth.isAuthenticated()">
+      <a
+        [routerLink]="['/logout']"
+        routerLinkActive="active"
+        (click)="setTitle('Abmeldung')"
+        >Logout</a
+      >
+    </li>
+    <li *ngIf="!auth.isAuthenticated()">
+      <a
+        [routerLink]="['/login']"
+        routerLinkActive="active"
+        (click)="setTitle('Anmeldung')"
+        >Login</a
+      >
+    </li>
+  </ul>
 </header>
