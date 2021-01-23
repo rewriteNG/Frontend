@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PwResetComponent } from './pw-reset.component';
 
@@ -6,7 +6,7 @@ describe('PwResetComponent', () => {
   let component: PwResetComponent;
   let fixture: ComponentFixture<PwResetComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PwResetComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CharnavComponent } from './charnav.component';
 
@@ -6,7 +6,7 @@ describe('CharnavComponent', () => {
   let component: CharnavComponent;
   let fixture: ComponentFixture<CharnavComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CharnavComponent ]
     })
