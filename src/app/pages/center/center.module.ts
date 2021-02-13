@@ -6,6 +6,7 @@ import { CharnavComponent } from 'src/app/layout/charnav/charnav.component';
 import { CharRootComponent } from './char-root/char-root.component';
 import { CharBaseComponent } from './char-base/char-base.component';
 import { CharValueComponent } from './char-value/char-value.component';
+import { CharDeleteComponent } from './char-delete/char-delete.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { CharValueComponent } from './char-value/char-value.component';
     CharRootComponent,
     CharBaseComponent,
     CharValueComponent,
+    CharDeleteComponent,
   ],
   imports: [
     CommonModule,

@@ -5,19 +5,21 @@ import { environment } from "src/environments/environment";
 import { Charbase } from "../charbase";
 import { Observable } from "rxjs";
 import { Charvalue } from "../charvalue";
+import { Characters } from "../characters";
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
-  })
+    "Content-Type": "application/json",
+  }),
 };
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CharService {
   public charBase: Charbase;
   public charValue: Charvalue;
+  public charJson: Characters;
   private readonly apiUrl = environment.apiUrl + "/character";
   private indexUrl = this.apiUrl + "/index";
   private charBaseUrl = this.apiUrl + "/charbase";
@@ -25,10 +27,11 @@ export class CharService {
 
   constructor(private http: HttpClient) {}
 
-  onCharOverView() {
+  onCharOverView(): Observable<Characters> {
     return this.http.get(this.indexUrl, httpOptions).pipe(
-      tap(resp => {
+      tap((resp: Characters) => {
         console.log(resp);
+        this.charJson = resp;
       })
     );
   }
@@ -51,6 +54,14 @@ export class CharService {
         this.charValue = resp;
       })
     );
+  }
+
+  setCharJson(charas: JSON) {
+    return localStorage.setItem("char_json", JSON.stringify(charas));
+  }
+
+  getCharJson(): JSON {
+    return JSON.parse(localStorage.getItem("char_json"));
   }
 
   setCharId(id: number) {

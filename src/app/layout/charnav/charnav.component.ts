@@ -1,29 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-charnav',
-  templateUrl: './charnav.component.html',
-  styleUrls: ['./charnav.component.scss']
+  selector: "app-charnav",
+  templateUrl: "./charnav.component.html",
+  styleUrls: ["./charnav.component.scss"],
 })
 export class CharnavComponent implements OnInit {
   items = [
-    { "route": "base", "title": "Character-Allgemein", "name": "Allgemein" },
-    { "route": "value", "title": "Character-Grundwerte", "name": "Grundwerte" },
+    { route: "base", title: "Character-Allgemein", name: "Allgemein" },
+    { route: "value", title: "Character-Grundwerte", name: "Grundwerte" },
+    { route: "delete", title: "Character-Löschen", name: "Löschen" },
     // { "route": "skills", "title": "Character-Fähigkeiten", "name": "Fähigkeiten" },
     // { "route": "inventory", "title": "Character-Inventar", "name": "Inventar" },
     // { "route": "jutsu", "title": "Character-Jutsu", "name": "Jutsu" },
     // { "route": "special", "title": "Character-Besonderheiten", "name": "Besonderheiten" }
   ];
-  constructor(
-    private titleTagService: Title,
-  ) { }
+  constructor(private titleTagService: Title) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   /**
    * sets the the Title of the Page in the Header
-   * @param pageTitle 
+   * @param pageTitle
    */
   public setTitle(pageTitle: string) {
     this.titleTagService.setTitle(pageTitle);
