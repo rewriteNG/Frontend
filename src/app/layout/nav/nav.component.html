@@ -8,7 +8,7 @@
         >Register</a
       >
     </li>
-    <li *ngIf="!auth.isAuthenticated()">
+    <li *ngIf="auth.isAuthenticated()">
       <a
         [routerLink]="['/account']"
         routerLinkActive="active"
