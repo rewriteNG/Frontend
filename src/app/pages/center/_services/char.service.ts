@@ -6,6 +6,7 @@ import { Charbase } from "../charbase";
 import { Observable } from "rxjs";
 import { Charvalue } from "../charvalue";
 import { Characters } from "../characters";
+import { Router } from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,8 +25,9 @@ export class CharService {
   private indexUrl = this.apiUrl + "/index";
   private charBaseUrl = this.apiUrl + "/charbase";
   private charValueUrl = this.apiUrl + "/charvalue";
+  private charDelete = this.apiUrl + "/delete";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onCharOverView(): Observable<Characters> {
     return this.http.get(this.indexUrl, httpOptions).pipe(
@@ -56,6 +58,16 @@ export class CharService {
     );
   }
 
+  onDeleteChar(): Observable<Characters> {
+    let id = this.getCharId();
+    return this.http.get(this.charDelete + "/" + id, httpOptions).pipe(
+      tap(() => {
+        this.remoteCharId();
+        this.router.navigate(["/"]);
+      })
+    );
+  }
+
   setCharJson(charas: JSON) {
     return localStorage.setItem("char_json", JSON.stringify(charas));
   }
@@ -70,6 +82,10 @@ export class CharService {
 
   getCharId(): string {
     return localStorage.getItem("char_id");
+  }
+
+  remoteCharId() {
+    localStorage.removeItem("char_id");
   }
 
   /**
