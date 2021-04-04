@@ -12,7 +12,6 @@ export class CharDeleteComponent implements OnInit {
   ngOnInit(): void {}
 
   public onDelete() {
-    console.log("Hallo");
     this.char.onDeleteChar().subscribe();
   }
 }

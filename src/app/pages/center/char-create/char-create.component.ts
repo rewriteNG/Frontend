@@ -18,30 +18,27 @@ export class CharCreateComponent implements OnInit {
   //   name: new FormControl(),
   //   age: new FormControl(),
   // });
-
+  error: any;
   createCharForm = this.fb.group({
     name: ["", [Validators.required, Validators.minLength(4)]],
     age: [12, [Validators.required, Validators.min(12), Validators.max(21)]],
   });
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    public char: CharService
+  ) {}
 
   ngOnInit() {}
 
   onSubmit() {
     console.log(this.createCharForm.value);
-    // this.submitted = true;
-    // if (this.regisForm.invalid) {
-    //   return;
-    // }
-    // this.auth.onRegister(regisForm).subscribe(
-    //   (response) => {
-    //     //get return url from the route parameters or default to '/'
-    //     this.router.navigate([this.returnUrl]);
-    //   },
-    //   (err) => {
-    //     this.error = err.error;
-    //   }
-    // );
+    this.char.onCreateChar(this.createCharForm.value).subscribe(
+      (response) => {},
+      (err) => {
+        this.error = err.error;
+      }
+    );
   }
   get name() {
     return this.createCharForm.get("name");
