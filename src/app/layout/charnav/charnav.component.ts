@@ -10,6 +10,7 @@ export class CharnavComponent implements OnInit {
   items = [
     { route: "base", title: "Character-Allgemein", name: "Allgemein" },
     { route: "value", title: "Character-Grundwerte", name: "Grundwerte" },
+    { route: "create", title: "Character-Erstellung", name: "Neuer Character" },
     { route: "delete", title: "Character-Löschen", name: "Löschen" },
     // { "route": "skills", "title": "Character-Fähigkeiten", "name": "Fähigkeiten" },
     // { "route": "inventory", "title": "Character-Inventar", "name": "Inventar" },

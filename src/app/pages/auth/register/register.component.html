@@ -1,41 +1,73 @@
 <main role="main">
-    <div class='register'>
-        <b>Anmeldung:</b><br>
-        <form [formGroup]="regisForm" (ngSubmit)="onSubmit(regisForm.value)">
-            <div class='form-group'>
-                <label>Login:</label>
-                <input formControlName="name" name="name" type="text" id="name" maxlength="50">
-                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                    <div *ngIf="f.name.errors.required">Ein Login wird benötigt</div>
-                    <div *ngIf="f.name.errors.minlength">Der Login muss mindestens 4 Zeichen lang sein.</div>
-                </div>
-            </div>
-            <div>
-                <label>Passwort:</label>
-                <input formControlName="password" name="pw" type="password" id="pw" maxlength="64">
-                <div *ngIf="f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">Passwort wird benötigt</div>
-                    <div *ngIf="f.password.errors.minlength">Password muss mindestens 8 Zeichen lang sein.</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Passwort bestätigen:</label>
-                <input formControlName="password_conf" name="pw2" type="password" id="pw2" maxlength="64">,
-                <div *ngIf="regisForm.hasError('notSame')" class="invalid-feedback">
-                    Passwörter stimmen nicht überein.
-                </div>
-            </div>
-            <div class="form-group">
-                <label>E-Mail:</label>
-                <input formControlName="email"  name="email" type="email" id="email" maxlength="50">
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">Ein Email-Adresse wird benötigt.</div>
-                    <div *ngIf="f.email.errors.email">Eingabe entspricht nicht dem Email Format.</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type=" submit" name="Submit" value="Anmelden">Anmelden</button>
-            </div>
-        </form>
-    </div>
+  <div class="register">
+    <b>Anmeldung:</b><br />
+    <form [formGroup]="regisForm" (ngSubmit)="onSubmit(regisForm.value)">
+      <div class="form-group">
+        <label>Login:</label>
+        <input
+          formControlName="name"
+          name="name"
+          type="text"
+          id="name"
+          maxlength="50"
+        />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">Ein Login wird benötigt</div>
+          <div *ngIf="f.name.errors.minlength">
+            Der Login muss mindestens 4 Zeichen lang sein.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label>Passwort:</label>
+        <input
+          formControlName="password"
+          name="pw"
+          type="password"
+          id="pw"
+          maxlength="64"
+        />
+        <div *ngIf="f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Passwort wird benötigt</div>
+          <div *ngIf="f.password.errors.minlength">
+            Password muss mindestens 8 Zeichen lang sein.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Passwort bestätigen:</label>
+        <input
+          formControlName="password_conf"
+          name="pw2"
+          type="password"
+          id="pw2"
+          maxlength="64"
+        />,
+        <div *ngIf="regisForm.hasError('notSame')" class="invalid-feedback">
+          Passwörter stimmen nicht überein.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-Mail:</label>
+        <input
+          formControlName="email"
+          name="email"
+          type="email"
+          id="email"
+          maxlength="50"
+        />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">
+            Ein Email-Adresse wird benötigt.
+          </div>
+          <div *ngIf="f.email.errors.email">
+            Eingabe entspricht nicht dem Email Format.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type=" submit" name="Submit" value="Anmelden">Anmelden</button>
+      </div>
+    </form>
+  </div>
 </main>

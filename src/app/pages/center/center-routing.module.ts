@@ -6,6 +6,7 @@ import { CharRootComponent } from "./char-root/char-root.component";
 import { CharBaseComponent } from "./char-base/char-base.component";
 import { CharValueComponent } from "./char-value/char-value.component";
 import { CharDeleteComponent } from "./char-delete/char-delete.component";
+import { CharCreateComponent } from "./char-create/char-create.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: "base", component: CharBaseComponent },
       { path: "value", component: CharValueComponent },
       { path: "delete", component: CharDeleteComponent },
+      { path: "create", component: CharCreateComponent },
     ],
   },
   { path: "center", outlet: "charnav", component: CharnavComponent },
