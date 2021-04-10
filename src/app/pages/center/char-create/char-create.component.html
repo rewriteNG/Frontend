@@ -15,13 +15,13 @@
     </div>
     <div>
       <label> Nachname: </label>
-      <input type="text" formControlName="lastname" min="4" required />
+      <input type="text" formControlName="surname" min="4" required />
       <div
-        *ngIf="lastname.invalid && (lastname.touched || lastname.dirty)"
+        *ngIf="surname.invalid && (surname.touched || surname.dirty)"
         class="invalid-feedback"
       >
-        <div *ngIf="lastname.errors.required">Ein Name wird benötigt</div>
-        <div *ngIf="lastname.errors.minlength">
+        <div *ngIf="surname.errors.required">Ein Name wird benötigt</div>
+        <div *ngIf="surname.errors.minlength">
           Der Name muss mindestens 4 Zeichen lang sein.
         </div>
       </div>
@@ -38,6 +38,62 @@
         <div *ngIf="age.errors.max">Maximal Alter ist ...</div>
       </div>
     </label>
+    <div>
+      <label for="gender">Gechlecht:</label>
+      <select formControlName="gender" class="form-control">
+        <option disabled>Wähle Geschlecht/option></option>
+        <option></option>
+        <option *ngFor="let element of genderOptions | keyvalue">
+          {{ element.value.value }}
+        </option>
+      </select>
+      <div
+        *ngIf="gender.invalid && (gender.touched || gender.dirty)"
+        class="invalid-feedback"
+      >
+        <div *ngIf="gender.errors.required">Ein Geschlecht wird benötigt</div>
+      </div>
+    </div>
+    <div>
+      <label for="home_village">Heimatdorf:</label>
+      <select formControlName="home_village" class="form-control">
+        <option disabled>Wähle Heimatdorf/option></option>
+        <option></option>
+        <option *ngFor="let element of home_villageOptions | keyvalue">
+          {{ element.value.value }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          home_village.invalid && (home_village.touched || home_village.dirty)
+        "
+        class="invalid-feedback"
+      >
+        <div *ngIf="home_village.errors.required">
+          Ein Heimatdorf wird benötigt
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="chakra_color">Chakrafarbe:</label>
+      <select formControlName="chakra_color" class="form-control">
+        <option disabled>Wähle Chakrafarbe/option></option>
+        <option></option>
+        <option *ngFor="let element of chakra_colorOptions | keyvalue">
+          {{ element.value.value }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          chakra_color.invalid && (chakra_color.touched || chakra_color.dirty)
+        "
+        class="invalid-feedback"
+      >
+        <div *ngIf="chakra_color.errors.required">
+          Eine Chakrafarbe wird benötigt
+        </div>
+      </div>
+    </div>
     <button type="submit" [disabled]="!createCharForm.valid">Submit</button>
   </form>
   <p>Form Status: {{ createCharForm.status }}</p>

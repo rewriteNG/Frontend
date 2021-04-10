@@ -45,7 +45,11 @@ export class CharService {
 
   onCreateChar(charForm): Observable<Charbase> {
     const request = JSON.stringify({
-      name: charForm.name,
+      firstname: charForm.firstname,
+      surname: charForm.surname,
+      gender: charForm.gender,
+      home_village: charForm.home_village,
+      chakra_color: charForm.chakra_color,
       age: charForm.age,
     });
     console.log(request);

@@ -14,7 +14,7 @@ export class CharCreateComponent implements OnInit {
   error: any;
   createCharForm = this.fb.group({
     firstname: ["", [Validators.required, Validators.minLength(4)]],
-    lastname: ["", [Validators.required, Validators.minLength(4)]],
+    surname: ["", [Validators.required, Validators.minLength(4)]],
     gender: ["", [Validators.required]],
     home_village: ["", [Validators.required]],
     chakra_color: ["", [Validators.required]],
@@ -54,8 +54,8 @@ export class CharCreateComponent implements OnInit {
   get firstname() {
     return this.createCharForm.get("firstname");
   }
-  get lastname() {
-    return this.createCharForm.get("lastname");
+  get surname() {
+    return this.createCharForm.get("surname");
   }
   get gender() {
     return this.createCharForm.get("gender");
