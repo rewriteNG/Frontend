@@ -1,17 +1,31 @@
 <div>
   <form [formGroup]="createCharForm" (ngSubmit)="onSubmit()">
-    <label>
-      Name : <input type="text" formControlName="name" min="4" required />
+    <div>
+      <label> Vorname: </label>
+      <input type="text" formControlName="firstname" min="4" required />
       <div
-        *ngIf="name.invalid && (name.touched || name.dirty)"
+        *ngIf="firstname.invalid && (firstname.touched || firstname.dirty)"
         class="invalid-feedback"
       >
-        <div *ngIf="name.errors.required">Ein Name wird benötigt</div>
-        <div *ngIf="name.errors.minlength">
+        <div *ngIf="firstname.errors.required">Ein Name wird benötigt</div>
+        <div *ngIf="firstname.errors.minlength">
           Der Name muss mindestens 4 Zeichen lang sein.
         </div>
       </div>
-    </label>
+    </div>
+    <div>
+      <label> Nachname: </label>
+      <input type="text" formControlName="lastname" min="4" required />
+      <div
+        *ngIf="lastname.invalid && (lastname.touched || lastname.dirty)"
+        class="invalid-feedback"
+      >
+        <div *ngIf="lastname.errors.required">Ein Name wird benötigt</div>
+        <div *ngIf="lastname.errors.minlength">
+          Der Name muss mindestens 4 Zeichen lang sein.
+        </div>
+      </div>
+    </div>
     <label>
       Age :
       <input type="number" formControlName="age" min="12" max="21" required />
