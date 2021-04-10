@@ -1,7 +1,9 @@
 <div *ngIf="auth.isAuthenticated(); else elseblock">
   <div *ngIf="characters">
     <div *ngFor="let chara of characters">
-      <a (click)="char.setCharId(chara?.id)">{{ chara?.name }}</a>
+      <a (click)="char.setCharId(chara?.id)"
+        >{{ chara?.firstname }} {{ chara?.surname }}</a
+      >
     </div>
   </div>
 </div>

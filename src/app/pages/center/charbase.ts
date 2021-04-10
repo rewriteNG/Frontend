@@ -1,11 +1,15 @@
 export class Charbase {
-  name?: string;
+  id?: number;
+  firstname?: string;
+  surname?: string;
   age?: number;
+  chakra_color?: string;
   gender?: string;
+  home_village?: string;
   current_location?: string;
   faction?: string;
+  picture?: string;
   rank?: string;
   money?: number;
-  home_village?: string;
   constructor() {}
 }
