@@ -18,6 +18,7 @@ import { LeftComponent } from "./layout/left/left.component";
 import { RightComponent } from "./layout/right/right.component";
 import { CharchooseComponent } from "./layout/charchoose/charchoose.component";
 import { AccountModule } from "./pages/account/account.module";
+import { VillageModule } from "./pages/village/village.module";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AccountModule } from "./pages/account/account.module";
     HomeModule,
     AccountModule,
     CenterModule,
+    VillageModule,
     AuthModule,
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,

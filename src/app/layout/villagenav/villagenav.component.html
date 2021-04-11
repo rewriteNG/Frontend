@@ -1,0 +1,10 @@
+<div class="village-nav">
+  <div *ngFor="let item of items">
+    <a
+      [routerLink]="[item.route]"
+      routerLinkActive="active"
+      (click)="setTitle(item.title)"
+      >{{ item.name }}</a
+    >
+  </div>
+</div>
