@@ -1,1 +1,17 @@
-<p>training works!</p>
+<div *ngFor="let group of formHolder | keyvalue">
+  <form [formGroup]="group.value.form" (click)="onSubmit(group.value.form)">
+    <label>{{ group.key }}</label>
+    <input
+      type="number"
+      formControlName="value"
+      min="{{ charavalue[group.value.start] }}"
+      value="{{ charavalue[group.value.start] }}"
+    />
+    <button
+      type="submit"
+      [disabled]="!group.value.form.valid || charavalue.str == null"
+    >
+      Submit
+    </button>
+  </form>
+</div>
