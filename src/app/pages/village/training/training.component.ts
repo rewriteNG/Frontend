@@ -16,6 +16,7 @@ import { CharService } from "../../center/_services/char.service";
 })
 export class TrainingComponent implements OnInit {
   charavalue: Charvalue = new Charvalue();
+  trainCheck: boolean;
   customValidator(ac, key): ValidationErrors {
     if (+ac < this.charavalue[key]) {
       return { tooOld: true };
@@ -42,43 +43,62 @@ export class TrainingComponent implements OnInit {
     return this.customValidator(ac.value, "Chakra");
   };
 
-  trainStrForm = this.fb.group({
-    time: [0],
-    value: [0, [this.customStrValidor]],
-  });
-  trainDefForm = this.fb.group({
-    time: [0],
-    value: [0, [this.customDefValidor]],
-  });
-
-  trainSpeedForm = this.fb.group({
-    time: [0],
-    value: [0, [this.customSpeedValidor]],
-  });
-
-  trainStaminaForm = this.fb.group({
-    time: [0],
-    value: [0, [this.customStaminaValidor]],
-  });
-
-  trainChakraForm = this.fb.group({
-    time: [0],
-    value: [0, [this.customChakraValidor]],
-  });
-
   formHolder = {
-    Stärke: { form: this.trainStrForm, start: "str" },
-    Verteidigung: { form: this.trainDefForm, start: "def" },
-    Geschwindigkeit: { form: this.trainSpeedForm, start: "speed" },
-    Chakra: { form: this.trainChakraForm, start: "chakra" },
-    Ausdauer: { form: this.trainStaminaForm, start: "stamina" },
+    str: "Stärke",
+    def: "Verteidigung",
+    speed: "Geschwindigkeit",
+    chakra: "Chakra",
+    stamina: "Ausdauer",
   };
+
+  trainForm = this.fb.group({
+    str: this.fb.group({
+      time: [0],
+      value: [0],
+    }),
+    def: this.fb.group({
+      time: [0],
+      value: [0],
+    }),
+    speed: this.fb.group({
+      time: [0],
+      value: [0],
+    }),
+    stamina: this.fb.group({
+      time: [0],
+      value: [0],
+    }),
+    chakra: this.fb.group({
+      time: [0],
+      value: [0],
+    }),
+  });
 
   constructor(public fb: FormBuilder, public chara: CharService) {}
 
   ngOnInit(): void {
     this.chara.onGetCharValue().subscribe((resp) => {
       this.charavalue = resp;
+      this.trainForm.setValue({
+        str: { time: 0, value: resp.str },
+        def: { time: 0, value: resp.def },
+        speed: { time: 0, value: resp.speed },
+        stamina: { time: 0, value: resp.stamina },
+        chakra: { time: 0, value: resp.chakra },
+      });
+    });
+    this.trainForm.valueChanges.subscribe((newForm) => {
+      let count = 0;
+      this.trainCheck = true;
+      for (let element in this.formHolder) {
+        if (newForm[element]["value"] > this.charavalue[element]) {
+          count += 1;
+        }
+      }
+      if (count <= 1) {
+        return;
+      }
+      this.trainCheck = false;
     });
   }
 
