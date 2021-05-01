@@ -1,3 +1,4 @@
+import { ThrowStmt } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
@@ -8,6 +9,7 @@ import {
 } from "@angular/forms";
 import { Charvalue } from "../../center/charvalue";
 import { CharService } from "../../center/_services/char.service";
+import { TrainService } from "../_services/train.service";
 
 @Component({
   selector: "app-training",
@@ -16,6 +18,7 @@ import { CharService } from "../../center/_services/char.service";
 })
 export class TrainingComponent implements OnInit {
   charavalue: Charvalue = new Charvalue();
+  baseTrainValues;
   doubletrainCheck: boolean = false;
   mintrainCheck: boolean = false;
 
@@ -50,9 +53,16 @@ export class TrainingComponent implements OnInit {
     }),
   });
 
-  constructor(public fb: FormBuilder, public chara: CharService) {}
+  constructor(
+    public fb: FormBuilder,
+    public chara: CharService,
+    public ts: TrainService
+  ) {}
 
   ngOnInit(): void {
+    this.ts.getBaseTrain(this.chara.getCharId()).subscribe((resp) => {
+      this.baseTrainValues = resp;
+    });
     this.chara.onGetCharValue().subscribe((resp) => {
       this.charavalue = resp;
       this.trainForm.setValue({
@@ -84,7 +94,23 @@ export class TrainingComponent implements OnInit {
     });
   }
 
+  checkTrainCustomValue(key: string): boolean {
+    return this.trainForm.value[key]["value"] > this.charavalue[key];
+  }
+
+  getTrainDays(key: string): number {
+    return Math.ceil(
+      (this.trainForm.value[key]["value"] - this.charavalue[key]) /
+        this.baseTrainValues[key]
+    );
+  }
+
   onSubmit(form: FormGroup) {
-    console.log(form.value);
+    let out = {
+      id: this.chara.getCharId(),
+      key: "str",
+      value: 0,
+    };
+    this.ts.postCharTrain(out);
   }
 }
