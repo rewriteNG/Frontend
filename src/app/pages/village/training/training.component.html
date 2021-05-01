@@ -13,7 +13,12 @@
       />
       <button
         type="submit"
-        [disabled]="!trainForm.valid || charavalue.str == null || !trainCheck"
+        [disabled]="
+          !trainForm.valid ||
+          charavalue.str == null ||
+          doubletrainCheck ||
+          mintrainCheck
+        "
       >
         Submit
       </button>

@@ -16,32 +16,8 @@ import { CharService } from "../../center/_services/char.service";
 })
 export class TrainingComponent implements OnInit {
   charavalue: Charvalue = new Charvalue();
-  trainCheck: boolean;
-  customValidator(ac, key): ValidationErrors {
-    if (+ac < this.charavalue[key]) {
-      return { tooOld: true };
-    } else {
-      null;
-    }
-  }
-  customStrValidor: ValidatorFn = (ac): ValidationErrors => {
-    return this.customValidator(ac.value, "str");
-  };
-  customDefValidor: ValidatorFn = (ac): ValidationErrors => {
-    return this.customValidator(ac.value, "def");
-  };
-
-  customSpeedValidor: ValidatorFn = (ac): ValidationErrors => {
-    return this.customValidator(ac.value, "Speed");
-  };
-
-  customStaminaValidor: ValidatorFn = (ac): ValidationErrors => {
-    return this.customValidator(ac.value, "Stamina");
-  };
-
-  customChakraValidor: ValidatorFn = (ac): ValidationErrors => {
-    return this.customValidator(ac.value, "Chakra");
-  };
+  doubletrainCheck: boolean = false;
+  mintrainCheck: boolean = false;
 
   formHolder = {
     str: "Stärke",
@@ -88,17 +64,23 @@ export class TrainingComponent implements OnInit {
       });
     });
     this.trainForm.valueChanges.subscribe((newForm) => {
-      let count = 0;
-      this.trainCheck = true;
+      let countMultiTrain = 0;
+      let countMinTrain = 0;
+      this.doubletrainCheck = false;
+      this.mintrainCheck = false;
       for (let element in this.formHolder) {
         if (newForm[element]["value"] > this.charavalue[element]) {
-          count += 1;
+          countMultiTrain += 1;
+        } else if (newForm[element]["value"] < this.charavalue[element]) {
+          countMinTrain += 1;
         }
       }
-      if (count <= 1) {
-        return;
+      if (countMultiTrain > 1) {
+        this.doubletrainCheck = true;
       }
-      this.trainCheck = false;
+      if (countMinTrain > 0) {
+        this.mintrainCheck = true;
+      }
     });
   }
 
