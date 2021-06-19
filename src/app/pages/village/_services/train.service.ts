@@ -22,10 +22,15 @@ export class TrainService {
   private readonly apiUrl = environment.apiUrl + "/character/train";
   private baseTrainUrl = this.apiUrl + "/getBaseTrain";
   private createTrainUrl = this.apiUrl + "/create";
+  private indexTrainUrl = this.apiUrl + "/index";
   constructor(private http: HttpClient) {}
 
   getBaseTrain(id: string): Observable<Object> {
     return this.http.get(this.baseTrainUrl + "/" + id, httpOptions);
+  }
+
+  getIndexTrain(id: string): Observable<Object> {
+    return this.http.get(this.indexTrainUrl + "/" + id, httpOptions);
   }
 
   postCharTrain(payload): Observable<Object> {
@@ -34,7 +39,6 @@ export class TrainService {
       char_value: payload.key,
       days: payload.value,
     });
-    console.log(request);
     return this.http.post(this.createTrainUrl, request, httpOptions).pipe(
       map((response) => {
         console.log(response);
@@ -44,6 +48,7 @@ export class TrainService {
     );
   }
 
+  //TODO move handleerror on one place
   /**
    * error Handling client side errors get output in the console, other errors are pushed on
    * @param error

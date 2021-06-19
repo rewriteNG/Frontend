@@ -21,6 +21,7 @@ export class TrainingComponent implements OnInit {
   baseTrainValues;
   doubletrainCheck: boolean = false;
   mintrainCheck: boolean = false;
+  public activTrain: { key: string; value: number };
 
   formHolder = {
     str: "Stärke",
@@ -63,16 +64,7 @@ export class TrainingComponent implements OnInit {
     this.ts.getBaseTrain(this.chara.getCharId()).subscribe((resp) => {
       this.baseTrainValues = resp;
     });
-    this.chara.onGetCharValue().subscribe((resp) => {
-      this.charavalue = resp;
-      this.trainForm.setValue({
-        str: { time: 0, value: resp.str },
-        def: { time: 0, value: resp.def },
-        speed: { time: 0, value: resp.speed },
-        stamina: { time: 0, value: resp.stamina },
-        chakra: { time: 0, value: resp.chakra },
-      });
-    });
+    this.onUpdate();
     this.trainForm.valueChanges.subscribe((newForm) => {
       let countMultiTrain = 0;
       let countMinTrain = 0;
@@ -94,6 +86,25 @@ export class TrainingComponent implements OnInit {
     });
   }
 
+  onUpdate() {
+    this.ts.getIndexTrain(this.chara.getCharId()).subscribe((resp) => {
+      this.activTrain = {
+        key: this.formHolder[resp["char_value"]],
+        value: resp["days"],
+      };
+    });
+    this.chara.onGetCharValue().subscribe((resp) => {
+      this.charavalue = resp;
+      this.trainForm.setValue({
+        str: { time: 0, value: resp.str },
+        def: { time: 0, value: resp.def },
+        speed: { time: 0, value: resp.speed },
+        stamina: { time: 0, value: resp.stamina },
+        chakra: { time: 0, value: resp.chakra },
+      });
+    });
+  }
+
   checkTrainCustomValue(key: string): boolean {
     return this.trainForm.value[key]["value"] > this.charavalue[key];
   }
@@ -112,7 +123,10 @@ export class TrainingComponent implements OnInit {
       value: this.getTrainDays(name),
     };
     this.ts.postCharTrain(out).subscribe(
-      (response) => {},
+      //TODO better return value handling
+      (response) => {
+        this.onUpdate();
+      },
       (err) => {
         console.log(err.error);
       }

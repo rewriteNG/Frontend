@@ -1,3 +1,6 @@
+<div *ngIf="activTrain">
+  Aktives Training: {{ activTrain.key }} für {{ activTrain.value }} Tag(e)
+</div>
 <div *ngIf="baseTrainValues">
   <form [formGroup]="trainForm">
     <div
