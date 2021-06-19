@@ -1,7 +1,11 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
+import { Observable, throwError } from "rxjs";
+import { catchError, map } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { CharService } from "../../center/_services/char.service";
 
@@ -30,16 +34,29 @@ export class TrainService {
       char_value: payload.key,
       days: payload.value,
     });
-    return this.http.post(this.createTrainUrl, request, httpOptions);
-    // .pipe(
-    //   map((response: Charbase) => {
-    //     const id: number = response["id"];
-    //     if (id) {
-    //       this.setCharId(id);
-    //     }
-    //     return response;
-    //   }),
-    //   catchError((error) => this.handleError(error))
-    // );
+    console.log(request);
+    return this.http.post(this.createTrainUrl, request, httpOptions).pipe(
+      map((response) => {
+        console.log(response);
+        return response;
+      }),
+      catchError((error) => this.handleError(error))
+    );
+  }
+
+  /**
+   * error Handling client side errors get output in the console, other errors are pushed on
+   * @param error
+   */
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      //A client-side error
+      console.error("An error occurred:", error.error.message);
+    } else {
+      //Backend error.
+      return throwError(error);
+    }
+    //return custom error message
+    return throwError("Ops something smells Wrong here; please try later.");
   }
 }

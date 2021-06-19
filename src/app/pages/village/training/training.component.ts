@@ -105,12 +105,17 @@ export class TrainingComponent implements OnInit {
     );
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit(name: string) {
     let out = {
       id: this.chara.getCharId(),
-      key: "str",
-      value: 0,
+      key: name,
+      value: this.getTrainDays(name),
     };
-    this.ts.postCharTrain(out);
+    this.ts.postCharTrain(out).subscribe(
+      (response) => {},
+      (err) => {
+        console.log(err.error);
+      }
+    );
   }
 }

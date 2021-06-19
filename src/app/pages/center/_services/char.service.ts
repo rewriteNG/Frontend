@@ -52,8 +52,6 @@ export class CharService {
       chakra_color: charForm.chakra_color,
       age: charForm.age,
     });
-    console.log(request);
-    console.log(charForm);
     return this.http.post(this.createChar, request, httpOptions).pipe(
       map((response: Charbase) => {
         const id: number = response["id"];

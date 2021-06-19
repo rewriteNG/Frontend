@@ -20,8 +20,9 @@
           doubletrainCheck ||
           mintrainCheck
         "
+        (click)="onSubmit(element.key)"
       >
-        Submit
+        Trainieren
       </button>
       <div *ngIf="checkTrainCustomValue(element.key)">
         {{ getTrainDays(element.key) }} Tag(e) bis Ziel erreicht.
