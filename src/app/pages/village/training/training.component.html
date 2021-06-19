@@ -20,6 +20,7 @@
         type="submit"
         [disabled]="
           !trainForm.valid ||
+          charavalue[element.key] == trainForm.value[element.key]['value'] ||
           charavalue.str == null ||
           doubletrainCheck ||
           mintrainCheck
