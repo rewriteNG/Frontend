@@ -1,5 +1,6 @@
 <div *ngIf="activTrain">
   Aktives Training: {{ activTrain.key }} für {{ activTrain.value }} Tag(e)
+  <button (click)="onDelete()">Abbrechen</button>
 </div>
 <div *ngIf="baseTrainValues">
   <form [formGroup]="trainForm">

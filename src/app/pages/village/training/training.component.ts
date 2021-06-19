@@ -61,7 +61,7 @@ export class TrainingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ts.getBaseTrain(this.chara.getCharId()).subscribe((resp) => {
+    this.ts.getBaseTrain().subscribe((resp) => {
       this.baseTrainValues = resp;
     });
     this.onUpdate();
@@ -87,12 +87,17 @@ export class TrainingComponent implements OnInit {
   }
 
   onUpdate() {
-    this.ts.getIndexTrain(this.chara.getCharId()).subscribe((resp) => {
-      this.activTrain = {
-        key: this.formHolder[resp["char_value"]],
-        value: resp["days"],
-      };
-    });
+    this.ts.getIndexTrain().subscribe(
+      (resp) => {
+        this.activTrain = {
+          key: this.formHolder[resp["char_value"]],
+          value: resp["days"],
+        };
+      },
+      (err) => {
+        this.activTrain = null;
+      }
+    );
     this.chara.onGetCharValue().subscribe((resp) => {
       this.charavalue = resp;
       this.trainForm.setValue({
@@ -102,6 +107,12 @@ export class TrainingComponent implements OnInit {
         stamina: { time: 0, value: resp.stamina },
         chakra: { time: 0, value: resp.chakra },
       });
+    });
+  }
+
+  onDelete() {
+    this.ts.deleteTrain().subscribe((resp) => {
+      this.onUpdate();
     });
   }
 

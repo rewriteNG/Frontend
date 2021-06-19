@@ -23,14 +23,22 @@ export class TrainService {
   private baseTrainUrl = this.apiUrl + "/getBaseTrain";
   private createTrainUrl = this.apiUrl + "/create";
   private indexTrainUrl = this.apiUrl + "/index";
-  constructor(private http: HttpClient) {}
+  private deleteTrainUrl = this.apiUrl + "/delete";
+  constructor(private http: HttpClient, private cs: CharService) {}
 
-  getBaseTrain(id: string): Observable<Object> {
-    return this.http.get(this.baseTrainUrl + "/" + id, httpOptions);
+  getBaseTrain(): Observable<Object> {
+    return this.http.get(this.baseTrainUrl + this.getCharId(), httpOptions);
   }
 
-  getIndexTrain(id: string): Observable<Object> {
-    return this.http.get(this.indexTrainUrl + "/" + id, httpOptions);
+  getIndexTrain(): Observable<Object> {
+    return this.http.get(this.indexTrainUrl + this.getCharId(), httpOptions);
+  }
+
+  deleteTrain(): Observable<Object> {
+    return this.http.delete(
+      this.deleteTrainUrl + this.getCharId(),
+      httpOptions
+    );
   }
 
   postCharTrain(payload): Observable<Object> {
@@ -46,6 +54,10 @@ export class TrainService {
       }),
       catchError((error) => this.handleError(error))
     );
+  }
+
+  getCharId(): string {
+    return "/" + this.cs.getCharId();
   }
 
   //TODO move handleerror on one place
