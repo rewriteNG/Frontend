@@ -9,9 +9,11 @@
     <li><label>Ninjutsu:</label> {{ character?.nin }}</li>
     <li><label>Genjutsu:</label> {{ character?.gen }}</li>
     <ul>
-      <li *ngFor="let element of character.elements | keyvalue; index as i">
+      <!-- 
+        //TODO  Rework how to Save Elements
+        <li *ngFor="let element of character.elements | keyvalue; index as i">
         <label>{{ i + 1 }}. Elemente:</label> {{ element.value }}
-      </li>
+      </li> -->
     </ul>
     <li><label>Lernfähigkeit:</label> {{ character?.learn }}</li>
   </ul>
